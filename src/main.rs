@@ -1,11 +1,14 @@
-use ferris_says::say;
-use std::io::{stdout, BufWriter};
+use std::io;
 
 fn main() {
-    let stdout = stdout();
-    let out = b"Hello fellow Rustaceans";
-    let width = 24;
+    println!("Guess the number:");
     
-    let  mut writer = BufWriter::new(stdout.lock());
-    say(out, width, &mut writer).unwrap();
+    println!("Please input yoour guess.");
+    
+    let mut guess = String::new(); // mutable
+    
+    io::stdin().read_line(&mut guess)
+        .expect("Failed to read line");
+        
+    println!("You guessed: {}", guess);
 }
